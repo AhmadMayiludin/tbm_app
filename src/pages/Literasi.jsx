@@ -1,146 +1,75 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Book, Brain, Leaf, Library, Globe, Landmark, ArrowRight, X } from 'lucide-react';
+import literasiDasarImg from '../assets/drive/emot_1.jpg';
+import literasiKognitifImg from '../assets/drive/emot_2.jpg';
+import ekoliterasiImg from '../assets/drive/emot_3.jpg';
+import remajaImg from '../assets/drive/emot_4.jpg';
+import koleksiImg from '../assets/drive/emot_5.jpg';
+import agamaImg from '../assets/drive/emot_6.jpg';
 
 const articles = {
-  art1: {
-    tag: 'Literasi Dasar',
-    title: 'Mengapa Membaca Itu Bukan Sekadar Hobi?',
-    body: `<p>Sering kali kita mendengar, "saya tidak suka membaca" — seolah membaca adalah pilihan gaya hidup, seperti memilih olahraga favorit. Padahal, membaca adalah keterampilan dasar yang menentukan seberapa jauh seseorang bisa memahami dunianya sendiri.</p>
-    <p>UNESCO mendefinisikan literasi bukan hanya sebagai kemampuan membaca dan menulis, tetapi juga sebagai kemampuan berpikir kritis dan memanfaatkan informasi secara efektif. Artinya, literasi adalah jantung dari hampir semua kemampuan lain yang kita butuhkan dalam kehidupan modern.</p>
-    <p>Di TBM Pustaka Berkiprah, kami percaya bahwa membaca adalah pintu masuk menuju kehidupan yang lebih baik. Bukan karena semua orang harus menjadi kutu buku, melainkan karena kemampuan memahami tulisan membuka akses terhadap pengetahuan, hak, dan peluang yang ada di dunia ini.</p>
-    <p>Ketika seorang anak bisa membaca, ia tidak lagi hanya mengandalkan apa yang didengarnya. Ia bisa memverifikasi, membandingkan, dan membentuk pendapatnya sendiri. Itulah awal dari kemandirian berpikir yang sejati.</p>`
-  },
-  art2: {
-    tag: 'Literasi & Kognitif',
-    title: 'Literasi Membentuk Cara Kita Berpikir',
-    body: `<p>Tahukah kamu bahwa membaca secara aktif dapat mengubah struktur otak kita? Riset neurosains menunjukkan bahwa saat kita membaca, berbagai area otak aktif secara bersamaan — area bahasa, visualisasi, memori, dan bahkan emosi.</p>
-    <p>Anak-anak yang sering membaca sejak dini cenderung memiliki kemampuan berkonsentrasi lebih baik, kosa kata yang lebih kaya, dan kemampuan memahami perspektif orang lain (empati) yang lebih tinggi. Ini bukan kebetulan — ini adalah hasil dari latihan kognitif yang terjadi setiap kali mereka membaca.</p>
-    <p>Di TBM kami, kami melihat langsung bagaimana anak yang awalnya kesulitan membaca, setelah rutin bergabung dalam kegiatan belajar bersama, tidak hanya bisa membaca dengan lebih lancar — tetapi juga lebih mudah mengikuti pelajaran di sekolah dan lebih percaya diri dalam berinteraksi.</p>
-    <p>Literasi bukan hanya kemampuan teknis. Ia adalah investasi jangka panjang pada kualitas berpikir seseorang.</p>`
-  },
-  art3: {
-    tag: 'Literasi Kehidupan',
-    title: 'Literasi Bukan Hanya di Bangku Sekolah',
-    body: `<p>Bayangkan seorang ibu muda yang belum lancar membaca. Setiap kali belanja ke warung, ia tidak bisa memastikan apakah produk yang dibelinya sudah kadaluarsa atau belum. Ia tidak bisa membaca leaflet posyandu tentang gizi anak. Ia bergantung pada orang lain untuk hal-hal mendasar yang seharusnya bisa ia putuskan sendiri.</p>
-    <p>Inilah yang disebut dengan dampak nyata dari rendahnya literasi. Bukan soal tidak bisa lulus ujian, tetapi soal ketidakmampuan berpartisipasi penuh dalam kehidupan sehari-hari.</p>
-    <p>Literasi fungsional — kemampuan membaca dan menulis yang cukup untuk kebutuhan hidup sehari-hari — adalah hak dasar setiap manusia. TBM Pustaka Berkiprah hadir untuk membantu menjembatani kesenjangan itu, dengan cara yang tidak menghakimi, tidak merendahkan, dan selalu disesuaikan dengan kebutuhan nyata masyarakat.</p>
-    <p>Karena literasi yang bermakna adalah literasi yang membuat kehidupan seseorang menjadi lebih mudah dan lebih bermartabat.</p>`
-  },
-  art4: {
-    tag: 'Peran TBM',
-    title: 'TBM: Lebih dari Sekadar Rak Buku',
-    body: `<p>Ketika orang mendengar "taman bacaan", bayangan pertama yang muncul mungkin adalah sebuah ruangan kecil dengan rak buku berdebu dan beberapa anak yang membaca dalam keheningan. Nyatanya, TBM modern jauh lebih dari itu.</p>
-    <p>TBM Pustaka Berkiprah, misalnya, menjalankan kegiatan merajut, hidroponik, penyuluhan narkoba bersama BNN, dan pendampingan belajar daring saat pandemi. Semua ini jauh dari gambaran "hanya menyediakan buku".</p>
-    <p>TBM adalah ruang aman — tempat di mana seseorang bisa bertanya tanpa takut dianggap bodoh, belajar tanpa takut dihakimi, dan berkreasi tanpa batas. Ia adalah ekosistem pembelajaran yang adaptif dan responsif terhadap kebutuhan komunitas yang dilayaninya.</p>
-    <p>Inilah mengapa TBM tidak bisa digantikan begitu saja oleh perpustakaan digital atau platform online. Ada dimensi manusiawi dan komunitas yang hanya bisa hadir ketika orang-orang berkumpul secara fisik, berbagi pengalaman, dan belajar bersama.</p>`
-  },
-  art5: {
-    tag: 'Literasi Digital',
-    title: 'Cerdas di Era Digital Dimulai dari Literasi',
-    body: `<p>Setiap hari, kita dibombardir oleh ribuan informasi — berita, status media sosial, pesan berantai di WhatsApp, iklan, konten viral. Tanpa kemampuan literasi yang baik, seseorang tidak memiliki alat untuk menyaring mana yang benar, mana yang menyesatkan, dan mana yang berbahaya.</p>
-    <p>Hoaks menyebar cepat justru karena banyak orang belum terlatih untuk membaca secara kritis. Mereka membaca judul, langsung percaya, langsung meneruskan. Inilah mengapa literasi digital — kemampuan mengakses, mengevaluasi, dan memanfaatkan informasi digital secara bijak — menjadi keterampilan wajib di abad ke-21.</p>
-    <p>Di TBM Pustaka Berkiprah, kami mulai dari yang paling dasar: membiasakan anak-anak membaca sampai selesai sebelum berkomentar, mengajarkan remaja untuk mencari sumber kedua sebelum mempercayai informasi, dan mendiskusikan bersama tentang apa yang kita baca hari ini.</p>
-    <p>Literasi digital bukan soal pintar menggunakan gadget. Ia soal pintar menggunakan akal.</p>`
-  },
-  art6: {
-    tag: 'Literasi Agama',
-    title: 'Mengaji adalah Literasi yang Paling Dekat',
-    body: `<p>Di antara semua program TBM Pustaka Berkiprah, program Iqra untuk lansia adalah salah satu yang paling mengharukan. Bayangkan seorang nenek berusia 65 tahun yang seumur hidupnya belum bisa membaca Al-Quran dengan lancar, kini dengan penuh semangat datang setiap Senin pagi untuk belajar bersama.</p>
-    <p>Perpustakaan Nasional RI mengakui kegiatan keagamaan seperti pengajian dan iqra sebagai bagian dari literasi — tepatnya literasi agama. Dan ini masuk akal: proses belajar membaca huruf Arab, memahami maknanya, dan menghubungkannya dengan kehidupan sehari-hari adalah proses literasi yang sesungguhnya.</p>
-    <p>Yang paling berharga bukan hanya kemampuan membacanya, tetapi perjalanannya. Seorang lansia yang berani mulai belajar di usia tua menunjukkan bahwa belajar tidak mengenal batas usia. Ia adalah teladan hidup tentang semangat yang tidak pernah padam.</p>
-    <p>Di TBM kami, setiap orang yang hadir — berapapun usianya, apapun latar belakangnya — disambut dengan hangat. Karena selama ada keinginan untuk belajar, selalu ada tempat untuknya di sini.</p>`
-  }
+  art1: { title: 'Membangun Budaya Baca di Rumah', content: 'Literasi dimulai dari rumah. Menciptakan pojok baca yang nyaman dan meluangkan waktu 15 menit setiap hari untuk membaca bersama anak dapat membangun kecintaan mereka pada buku seumur hidup.', icon: <Book />, color: 'icon-blue', image: literasiDasarImg },
+  art2: { title: 'Pentingnya Literasi Digital', content: 'Di era informasi, kemampuan menyaring berita dan menggunakan perangkat digital secara bijak sangat krusial agar terhindar dari hoax dan penipuan siber.', icon: <Globe />, color: 'icon-purple', image: literasiKognitifImg },
+  art3: { title: 'Belajar dari Alam (Ekoliterasi)', content: 'Memahami ekosistem sekitar membantu kita lebih menghargai lingkungan. TBM mengajarkan budidaya tanaman sebagai bentuk literasi alam.', icon: <Leaf />, color: 'icon-green', image: ekoliterasiImg },
+  art4: { title: 'Remaja dan Literasi Kritis', content: 'Mengajak remaja berdiskusi tentang isu sosial melalui buku atau film dapat mengasah kemampuan berpikir kritis dan empati mereka.', icon: <Brain />, color: 'icon-pink', image: remajaImg },
+  art5: { title: 'Koleksi Buku di TBM Kami', content: 'Kami memiliki lebih dari 1.200 koleksi buku mulai dari cerita anak, pengetahuan umum, hingga keterampilan praktis yang bisa dipinjam secara gratis.', icon: <Library />, color: 'icon-amber', image: koleksiImg },
+  art6: { title: 'Mengaji adalah Literasi Terdekat', content: 'Dalam konteks masyarakat kami, belajar mengaji adalah bentuk literasi dasar yang paling dekat dengan kehidupan sehari-hari.', icon: <Landmark />, color: 'icon-green', image: agamaImg }
 };
 
 function Literasi() {
-  const [activeModal, setActiveModal] = useState(null);
+  const [selectedArt, setSelectedArt] = useState(null);
 
-  const openArticle = (id) => {
-    setActiveModal(articles[id]);
-  };
-
-  const closeModal = (e) => {
-    if (e.target.className.includes('modal-overlay')) {
-      setActiveModal(null);
-    }
-  };
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <>
-      <section id="literasi">
-        <div style={{height: '64px'}}></div>
-        <div className="section-eyebrow">Ruang Edukasi</div>
-        <h2 className="section-title">Pendidikan Literasi</h2>
-        <p className="section-desc">Literasi bukan hanya tentang membaca dan menulis. Ia adalah kemampuan berpikir kritis, memahami dunia, dan mengubah diri menjadi lebih baik.</p>
-        
-        <div className="articles-grid">
-          <div className="article-card" onClick={() => openArticle('art1')}>
-            <div className="article-thumb green">📖</div>
+    <section id="literasi">
+      <div className="section-eyebrow reveal">Bab 4 · Ruang Literasi</div>
+      <h2 className="section-title reveal">Wawasan &amp; Pengetahuan</h2>
+      <p className="section-desc reveal">Kumpulan artikel singkat dan informasi edukatif untuk meningkatkan minat baca dan wawasan masyarakat Karawang.</p>
+
+      <div className="articles-grid">
+        {Object.entries(articles).map(([id, art], index) => (
+          <div key={id} className="article-card reveal" style={{animationDelay: `${index * 0.1}s`}} onClick={() => setSelectedArt(art)}>
+            <div className={`article-thumb ${art.color}`}>
+              <img src={art.image} alt={`Gambar ${art.title}`} />
+              <span>{art.icon}</span>
+            </div>
             <div className="article-body">
-              <div className="article-cat">Literasi Dasar</div>
-              <div className="article-title">Mengapa Membaca Itu Bukan Sekadar Hobi?</div>
-              <p className="article-preview">Membaca adalah jendela dunia — pepatah yang sudah sering kita dengar, namun maknanya jauh lebih dalam dari sekadar ungkapan motivasi semata.</p>
-              <a className="article-readmore">Baca selengkapnya →</a>
+              <h3 className="article-title" style={{marginBottom: '1rem'}}>{art.title}</h3>
+              <p className="article-preview" style={{fontSize: '0.9rem', color: 'var(--muted)', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden'}}>{art.content}</p>
+              <div style={{marginTop: '1.5rem', color: 'var(--earth)', fontWeight: 'bold', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.4rem'}}>
+                Baca Selengkapnya <ArrowRight size={14} />
+              </div>
             </div>
           </div>
-          <div className="article-card" onClick={() => openArticle('art2')}>
-            <div className="article-thumb amber">🧠</div>
-            <div className="article-body">
-              <div className="article-cat">Literasi &amp; Kognitif</div>
-              <div className="article-title">Literasi Membentuk Cara Kita Berpikir</div>
-              <p className="article-preview">Ketika anak belajar membaca, bukan hanya huruf yang ia kenal — melainkan cara otaknya berkembang untuk memproses informasi secara lebih kompleks.</p>
-              <a className="article-readmore">Baca selengkapnya →</a>
+        ))}
+      </div>
+
+      {selectedArt && (
+        <div style={{position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 2000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem'}}>
+          <div className="card" style={{maxWidth: '600px', position: 'relative', animation: 'fadeInUp 0.4s ease'}}>
+            <button onClick={() => setSelectedArt(null)} style={{position: 'absolute', top: '1.5rem', right: '1.5rem', background: 'none', border: 'none', cursor: 'pointer'}}><X /></button>
+            <div className={`article-thumb ${selectedArt.color}`} style={{height: '190px', borderRadius: '8px', marginBottom: '1.5rem'}}>
+              <img src={selectedArt.image} alt={`Gambar ${selectedArt.title}`} />
+              <span>{selectedArt.icon}</span>
             </div>
-          </div>
-          <div className="article-card" onClick={() => openArticle('art3')}>
-            <div className="article-thumb earth">🌿</div>
-            <div className="article-body">
-              <div className="article-cat">Literasi Kehidupan</div>
-              <div className="article-title">Literasi Bukan Hanya di Bangku Sekolah</div>
-              <p className="article-preview">Seorang ibu yang bisa membaca label kemasan makanan, seorang lansia yang memahami dosis obatnya — itulah literasi yang sesungguhnya hidup di masyarakat.</p>
-              <a className="article-readmore">Baca selengkapnya →</a>
-            </div>
-          </div>
-          <div className="article-card" onClick={() => openArticle('art4')}>
-            <div className="article-thumb green">📚</div>
-            <div className="article-body">
-              <div className="article-cat">Peran TBM</div>
-              <div className="article-title">TBM: Lebih dari Sekadar Rak Buku</div>
-              <p className="article-preview">Taman Bacaan Masyarakat hadir bukan hanya menyediakan buku, tetapi juga menjadi ruang aman untuk belajar, bertanya, dan bertumbuh bagi semua usia.</p>
-              <a className="article-readmore">Baca selengkapnya →</a>
-            </div>
-          </div>
-          <div className="article-card" onClick={() => openArticle('art5')}>
-            <div className="article-thumb amber">🔗</div>
-            <div className="article-body">
-              <div className="article-cat">Literasi Digital</div>
-              <div className="article-title">Cerdas di Era Digital Dimulai dari Literasi</div>
-              <p className="article-preview">Di tengah banjir informasi digital, kemampuan memilah fakta dari hoaks adalah keterampilan hidup yang tak kalah penting dari kemampuan berhitung.</p>
-              <a className="article-readmore">Baca selengkapnya →</a>
-            </div>
-          </div>
-          <div className="article-card" onClick={() => openArticle('art6')}>
-            <div className="article-thumb earth">🕌</div>
-            <div className="article-body">
-              <div className="article-cat">Literasi Agama</div>
-              <div className="article-title">Mengaji adalah Literasi yang Paling Dekat</div>
-              <p className="article-preview">Bagi para lansia di TBM Pustaka Berkiprah, belajar membaca Al-Quran adalah perjalanan literasi yang penuh makna dan keberanian di usia senja.</p>
-              <a className="article-readmore">Baca selengkapnya →</a>
-            </div>
+            <h2 className="section-title" style={{fontSize: '1.8rem'}}>{selectedArt.title}</h2>
+            <p style={{lineHeight: '1.8', fontSize: '1.1rem'}}>{selectedArt.content}</p>
+            <button onClick={() => setSelectedArt(null)} className="btn-primary" style={{marginTop: '2rem'}}>Tutup</button>
           </div>
         </div>
-      </section>
-
-      <div className={`modal-overlay ${activeModal ? 'open' : ''}`} onClick={closeModal}>
-        {activeModal && (
-          <div className="modal">
-            <button className="modal-close" onClick={() => setActiveModal(null)}>✕</button>
-            <div className="modal-tag">{activeModal.tag}</div>
-            <h3 className="modal-title">{activeModal.title}</h3>
-            <div className="modal-body" dangerouslySetInnerHTML={{ __html: activeModal.body }}></div>
-          </div>
-        )}
-      </div>
-    </>
+      )}
+    </section>
   );
 }
 

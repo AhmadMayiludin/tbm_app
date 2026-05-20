@@ -1,119 +1,78 @@
-import React, { useState } from 'react';
-import { Package, Search } from 'lucide-react';
+import { useEffect } from 'react';
+import { ExternalLink, Heart, MessageCircle, Sparkles, Users } from 'lucide-react';
+
+const googleFormUrl = 'https://forms.gle/FCmG1rv1wPKz8twk8';
+const whatsappMessage = 'Halo Tbm Pustaka Berkiprah👋🏻, saya ingin bertanya terkait kunjungan dan observasi';
+const whatsappUrl = `https://wa.me/6285216789586?text=${encodeURIComponent(whatsappMessage)}`;
 
 function Relawan() {
-  const [toastMsg, setToastMsg] = useState('');
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
-  const showToast = (msg) => {
-    setToastMsg(msg);
-    setTimeout(() => setToastMsg(''), 3500);
-  };
-
-  const submitForm = () => {
-    const nama = document.getElementById('f-nama').value.trim();
-    const wa = document.getElementById('f-wa').value.trim();
-    const minat = document.getElementById('f-minat').value;
-    if (!nama || !wa || !minat) {
-      showToast('⚠️ Mohon lengkapi nama, WhatsApp, dan bidang minat.');
-      return;
-    }
-    showToast('✅ Pendaftaran berhasil dikirim! Kami akan menghubungi ' + nama + ' segera.');
-    document.getElementById('f-nama').value = '';
-    document.getElementById('f-wa').value = '';
-    document.getElementById('f-email').value = '';
-    document.getElementById('f-minat').value = '';
-    document.getElementById('f-motivasi').value = '';
-  };
+  const benefits = [
+    { icon: <Heart />, title: 'Berbagi Kebahagiaan', desc: 'Merasakan langsung dampak positif bagi masyarakat sekitar.' },
+    { icon: <Users />, title: 'Bertemu Komunitas', desc: 'Berkolaborasi dengan relawan dan warga yang peduli pada literasi.' },
+    { icon: <Sparkles />, title: 'Pengembangan Diri', desc: 'Mengasah kemampuan komunikasi, mengajar, dan organisasi.' },
+  ];
 
   return (
-    <>
-      <section id="relawan">
-        <div style={{height: '64px'}}></div>
-        <div className="relawan-layout">
-          <div className="relawan-why">
-            <div className="section-eyebrow">Ruang Partisipasi</div>
-            <h2 className="section-title">Jadilah Bagian dari Gerakan Literasi</h2>
-            <p className="section-desc" style={{marginBottom: '3rem'}}>TBM Pustaka Berkiprah tumbuh karena orang-orang yang peduli. Bergabunglah sebagai relawan dan bersama kita nyalakan semangat belajar di komunitas.</p>
-            
-            <div className="why-item">
-              <span className="why-num">01</span>
-              <div>
-                <div className="why-content-title">Dampak Nyata, Langsung Terasa</div>
-                <p className="why-content-desc">Setiap sesi yang kamu dampingi, setiap buku yang kamu bacakan, memberikan dampak langsung pada perkembangan anak dan masyarakat di sekitar TBM.</p>
+    <section id="relawan" className="relawan-page">
+      <div className="relawan-motion" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div className="section-eyebrow reveal">Bab 7 · Mari Bergabung</div>
+      <h2 className="section-title reveal">Jadilah Bagian dari Perubahan</h2>
+      <p className="section-desc reveal">Kami selalu terbuka bagi siapa saja yang ingin menyisihkan waktu dan tenaganya untuk kemajuan literasi di Karawang.</p>
+
+      <div className="relawan-layout">
+        <div className="relawan-info">
+          <div className="benefit-list">
+            {benefits.map((benefit, index) => (
+              <div key={benefit.title} className="benefit-item reveal" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="icon-amber benefit-icon">{benefit.icon}</div>
+                <div>
+                  <h3>{benefit.title}</h3>
+                  <p>{benefit.desc}</p>
+                </div>
               </div>
-            </div>
-            <div className="why-item">
-              <span className="why-num">02</span>
-              <div>
-                <div className="why-content-title">Belajar Sambil Berbagi</div>
-                <p className="why-content-desc">Menjadi relawan adalah kesempatan belajar tentang pendidikan masyarakat, kepemimpinan, dan empati sosial yang tak bisa kamu dapatkan dari bangku kuliah saja.</p>
-              </div>
-            </div>
-            <div className="why-item">
-              <span className="why-num">03</span>
-              <div>
-                <div className="why-content-title">Komunitas yang Hangat &amp; Inklusif</div>
-                <p className="why-content-desc">Bergabung dengan tim relawan yang beragam latar belakangnya, bersatu dalam satu tujuan: memajukan literasi dan memberdayakan masyarakat Karawang.</p>
-              </div>
-            </div>
+            ))}
           </div>
+        </div>
 
-          <div className="relawan-form-wrap">
-            <div className="form-title">Daftar Relawan TBM</div>
-            <p className="form-sub">Pendaftaran relawan kini dilakukan melalui Google Form. Silakan klik tombol di bawah ini untuk mengisi formulir pendaftaran.</p>
-            
-            <a 
-              href="https://forms.gle/FCmG1rv1wPKz8twk8" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="form-submit" 
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', marginBottom: '2.5rem' }}
-            >
-              Isi Formulir Pendaftaran 📝
+        <div className="relawan-action-card reveal">
+          <div className="relawan-action-visual">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div className="section-eyebrow">Pendaftaran & Kontak</div>
+          <h3>Daftar lewat Google Form</h3>
+          <p>Website tidak menyimpan data pendaftar. Semua pendaftaran diarahkan ke Google Form agar lebih rapi dan mudah dikelola.</p>
+          <div className="relawan-actions">
+            <a href={googleFormUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
+              Isi Google Form <ExternalLink size={18} />
             </a>
-
-            <div style={{ width: '100%', height: '1px', backgroundColor: 'rgba(255,255,255,0.1)', marginBottom: '2.5rem' }}></div>
-
-            <div className="form-title" style={{ fontSize: '1.25rem' }}>Ada Pertanyaan?</div>
-            <p className="form-sub">Jika kamu memiliki pertanyaan seputar kerelawanan, jangan ragu untuk menghubungi kami melalui WhatsApp.</p>
-            
-            <a 
-              href="https://wa.me/6285216789586?text=Halo%20Admin%20TBM,%20saya%20punya%20pertanyaan%20terkait%20pendaftaran%20relawan." 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="form-submit" 
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', backgroundColor: '#25D366', color: '#fff', border: 'none' }}
-            >
-              Hubungi via WhatsApp 💬
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+              Chat WhatsApp <MessageCircle size={18} />
             </a>
           </div>
-        </div>
-      </section>
-
-      <section id="kerjasama">
-        <div className="kerjasama-intro">
-          <div className="section-eyebrow">Kolaborasi &amp; Dukungan</div>
-          <h2 className="section-title">Mari Bergerak Bersama</h2>
-          <p className="section-desc">TBM Pustaka Berkiprah terbuka untuk berbagai bentuk kolaborasi dan dukungan dari institusi, komunitas, maupun individu yang peduli literasi.</p>
-        </div>
-        <div className="kerjasama-options" style={{ gridTemplateColumns: 'repeat(2, 1fr)', maxWidth: '800px', margin: '2rem auto 0' }}>
-          <div className="ks-card">
-            <span className="ks-icon" style={{display: 'flex', justifyContent: 'center'}}><Package size={36} color="var(--earth)" strokeWidth={1.5} /></span>
-            <div className="ks-title">Donasi Buku</div>
-            <p className="ks-desc">Sumbangkan buku bacaan, alat tulis, atau perlengkapan belajar untuk mendukung kegiatan anak-anak dan remaja di TBM.</p>
-            <a href="https://wa.me/6285216789586?text=Halo%20Admin%20TBM,%20saya%20tertarik%20untuk%20Donasi%20Buku." target="_blank" rel="noopener noreferrer" className="ks-link">Hubungi Kami →</a>
-          </div>
-          <div className="ks-card">
-            <span className="ks-icon" style={{display: 'flex', justifyContent: 'center'}}><Search size={36} color="var(--earth)" strokeWidth={1.5} /></span>
-            <div className="ks-title">Kunjungan &amp; Observasi</div>
-            <p className="ks-desc">Bagi mahasiswa atau umum yang ingin melakukan kunjungan, observasi, dan penelitian di bidang pendidikan masyarakat dan literasi.</p>
-            <a href="https://wa.me/6285216789586?text=Halo%20Tbm%20Pustaka%20Berkiprah%F0%9F%91%8B%F0%9F%8F%BB%2C%20saya%20ingin%20bertanya%20terkait%20kunjungan%20dan%20observasi." target="_blank" rel="noopener noreferrer" className="ks-link">Info Lebih Lanjut →</a>
+          <div className="wa-preview">
+            <span>Pesan otomatis WhatsApp:</span>
+            <p>{whatsappMessage}</p>
           </div>
         </div>
-      </section>
-
-      <div className={`toast ${toastMsg ? 'show' : ''}`} id="toast">{toastMsg}</div>
-    </>
+      </div>
+    </section>
   );
 }
 

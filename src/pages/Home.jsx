@@ -1,118 +1,145 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Calendar, Users } from 'lucide-react';
-import { FaInstagram } from 'react-icons/fa';
+import { MapPin, ArrowRight, Sparkles, Zap, ShieldCheck, Building2, Phone, BookOpen, Users, CalendarDays } from 'lucide-react';
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import heroImg from '../assets/drive/kegiatan_1.jpg';
+import logo from '../assets/drive/logo_photo.jpg';
 
 function Home() {
+  const whatsappMessage = 'Halo Tbm Pustaka Berkiprah👋🏻, saya ingin bertanya terkait kunjungan dan observasi';
+  const whatsappUrl = `https://wa.me/6285216789586?text=${encodeURIComponent(whatsappMessage)}`;
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  const identity = [
+    { icon: <Building2 size={22} />, label: 'Nama Lembaga', value: 'TBM Pustaka Berkiprah Karawang' },
+    { icon: <MapPin size={22} />, label: 'Alamat', value: 'Dusun Pakuncen RT.02/06, Desa Sukaharja, Telukjambe Timur, Karawang' },
+    { icon: <FaInstagram size={22} />, label: 'Instagram', value: '@pustakaberkiprah' },
+    { icon: <FaWhatsapp size={22} />, label: 'WhatsApp', value: '+62 852-1678-9586' },
+  ];
+
   return (
     <>
       <section className="hero" id="beranda">
-        <div className="hero-decoration">&amp;</div>
-        <p className="hero-tag">TBM Pustaka Berkiprah · Karawang</p>
-        <h1>Ruang <em>Nalar</em><br/>&amp; <em>Nyala</em> TBM</h1>
-        <p className="hero-desc">
-          Tempat belajar nonformal berbasis literasi untuk semua — dari anak-anak yang baru kenal huruf, remaja yang menemukan keterampilan, hingga lansia yang terus belajar sepanjang hayat.
-        </p>
-        <div className="hero-actions">
-          <Link to="/belajar" className="btn-primary">Jelajahi Program</Link>
-          <Link to="/relawan" className="btn-ghost">Bergabung sebagai Relawan →</Link>
+        <div className="hero-content">
+          <div className="hero-logo-lockup reveal">
+            <img src={logo} alt="Logo TBM Pustaka Berkiprah" />
+            <span>TBM Pustaka Berkiprah · Karawang</span>
+          </div>
+          <h1 className="reveal delay-1">Ruang <em>Nalar</em> &amp;<br/><em>Nyala</em> TBM</h1>
+          <p className="hero-desc reveal delay-2">
+            Tempat belajar nonformal berbasis literasi untuk semua, dari anak-anak yang baru mengenal huruf hingga warga yang terus belajar sepanjang hayat.
+          </p>
+          <div className="hero-actions reveal delay-3">
+            <Link to="/belajar" className="btn-primary">Mulai Belajar</Link>
+            <Link to="/panduan" className="btn-ghost">Buka Panduan <ArrowRight size={18} /></Link>
+          </div>
+
+          <div className="hero-stats reveal delay-3">
+            <div className="stat-item">
+              <div className="stat-num">2011</div>
+              <div className="stat-label">Berdiri Sejak</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-num">1.2K+</div>
+              <div className="stat-label">Koleksi Buku</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-num">50+</div>
+              <div className="stat-label">Relawan</div>
+            </div>
+          </div>
         </div>
-        <div className="hero-stats">
-          <div>
-            <div className="stat-num">2011</div>
-            <div className="stat-label">Berdiri Sejak</div>
+
+        <div className="hero-visual reveal delay-2">
+          <div className="hero-image-float">
+            <img src={heroImg} alt="Dokumentasi kegiatan TBM Pustaka Berkiprah" />
           </div>
-          <div>
-            <div className="stat-num">3+</div>
-            <div className="stat-label">Kelompok Sasaran</div>
-          </div>
-          <div>
-            <div className="stat-num">10+</div>
-            <div className="stat-label">Program Aktif</div>
-          </div>
-          <div>
-            <div className="stat-num">100%</div>
-            <div className="stat-label">Berbasis Sukarela</div>
-          </div>
-        </div>
-        <div className="hero-image-float">
-          <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="20" width="30" height="40" rx="3" fill="white"/>
-            <rect x="45" y="10" width="30" height="50" rx="3" fill="white"/>
-            <rect x="20" y="65" width="50" height="35" rx="3" fill="white"/>
-            <circle cx="70" cy="80" r="15" fill="white" opacity="0.5"/>
-          </svg>
+          <div className="floating-note note-a"><BookOpen size={18} /> Literasi</div>
+          <div className="floating-note note-b"><Users size={18} /> Komunitas</div>
+          <div className="floating-note note-c"><CalendarDays size={18} /> Kegiatan</div>
         </div>
       </section>
 
-      <section id="profil">
+      <section id="features">
+        <div className="section-eyebrow reveal">Bab 1 · Dasar Program</div>
+        <h2 className="section-title reveal">Literasi yang Memberdayakan</h2>
+        <p className="section-desc reveal">Setiap ruang di platform ini disusun sebagai bab: profil lembaga, ruang literasi, ruang belajar, kegiatan, panduan, dan relawan.</p>
+        <div className="features-grid">
+          <div className="feature-card reveal delay-1">
+            <div className="feature-icon icon-amber"><Sparkles size={28}/></div>
+            <h3>Kontekstual</h3>
+            <p>Belajar membaca, memahami informasi, dan melihat tantangan lingkungan sekitar secara kritis.</p>
+          </div>
+          <div className="feature-card reveal delay-2">
+            <div className="feature-icon icon-green"><Zap size={28}/></div>
+            <h3>Terampil</h3>
+            <p>Mengasah keterampilan praktis mulai dari kreativitas anak, merajut, hingga budidaya pangan.</p>
+          </div>
+          <div className="feature-card reveal delay-3">
+            <div className="feature-icon icon-blue"><ShieldCheck size={28}/></div>
+            <h3>Inklusif</h3>
+            <p>Ruang aman bagi warga untuk belajar, bertanya, mencoba, dan berkembang bersama.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="profil" className="identity-section">
         <div className="profil-grid">
-          <div className="profil-visual">
+          <div className="profil-visual reveal">
             <div className="profil-card">
+              <img src={logo} alt="Logo TBM Pustaka Berkiprah" className="profil-logo" />
               <p className="profil-quote">
                 "Selama ada satu orang pun yang mau diberdayakan, kegiatan tetap dijalankan. Itulah ruh dari TBM Pustaka Berkiprah."
               </p>
-              <span className="profil-cite">— Bunda Neneng, Pengelola TBM</span>
-              <div className="profil-tags">
-                <span className="profil-tag">📚 Literasi untuk Semua</span>
-                <span className="profil-tag">🌱 Berbasis Komunitas</span>
-                <span className="profil-tag">❤️ Sukarela &amp; Ikhlas</span>
-              </div>
+              <div className="profil-cite">Bunda Neneng, Pengelola</div>
             </div>
           </div>
-          <div className="profil-info">
-            <div className="section-eyebrow">Identitas Lembaga</div>
-            <h2 className="section-title">TBM Pustaka Berkiprah</h2>
-            <p className="section-desc" style={{marginBottom: '2rem'}}>Lembaga pendidikan nonformal yang lahir dari kepedulian terhadap literasi dan pemberdayaan masyarakat di Karawang.</p>
-            <div className="info-item">
-              <div className="info-icon"><MapPin size={20} strokeWidth={2.5} color="var(--earth-dark)" /></div>
-              <div>
-                <div className="info-label">Lokasi</div>
-                <div className="info-value">Dusun Pakuncen RT.02/06, Desa Sukaharja,<br/>Kec. Telukjambe Timur, Kab. Karawang</div>
-              </div>
-            </div>
-            <div className="info-item">
-              <div className="info-icon"><Calendar size={20} strokeWidth={2.5} color="var(--earth-dark)" /></div>
-              <div>
-                <div className="info-label">Berdiri Sejak</div>
-                <div className="info-value">2011</div>
-              </div>
-            </div>
-            <div className="info-item">
-              <div className="info-icon"><Users size={20} strokeWidth={2.5} color="var(--earth-dark)" /></div>
-              <div>
-                <div className="info-label">Pengelola</div>
-                <div className="info-value">Bunda Neneng &amp; Tim Relawan Sukarela</div>
-              </div>
-            </div>
-            <div className="info-item">
-              <div className="info-icon"><FaInstagram size={20} color="var(--earth-dark)" /></div>
-              <div>
-                <div className="info-label">Media Sosial</div>
-                <div className="info-value">
-                  <a href="https://www.instagram.com/pustakaberkiprah?igsh=MXJuYWpqZDIzbjZscQ==" target="_blank" rel="noopener noreferrer" style={{color: 'inherit', textDecoration: 'none'}}>@pustakaberkiprah (Instagram) ↗</a>
+          <div className="profil-info reveal">
+            <div className="section-eyebrow">Bab 2 · Identitas Lembaga</div>
+            <h2 className="section-title">Mengenal Pustaka Berkiprah</h2>
+            <div className="identitas-bab">
+              {identity.map((item) => (
+                <div className="info-item" key={item.label}>
+                  <div className="info-icon">{item.icon}</div>
+                  <div>
+                    <div className="info-label">{item.label}</div>
+                    <div className="info-value">{item.value}</div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-primary identity-wa">
+              <Phone size={18} /> Hubungi via WhatsApp
+            </a>
           </div>
         </div>
+      </section>
 
-        <div style={{marginTop: '4rem'}}>
-          <div className="section-eyebrow">Arah &amp; Tujuan</div>
-          <h2 className="section-title">Visi &amp; Misi</h2>
-          <div className="vm-grid">
-            <div className="vm-card visi">
-              <div className="vm-label">Visi</div>
-              <p className="vm-text">Menjadi Taman Baca Masyarakat yang <strong>berdaya</strong> dan <strong>bermanfaat</strong> — bagi setiap individu, keluarga, dan komunitas di sekitarnya.</p>
-            </div>
-            <div className="vm-card">
-              <div className="vm-label">Misi</div>
-              <ul className="misi-list">
-                <li>Memberdayakan potensi lingkungan melalui program literasi yang kontekstual dan inklusif</li>
-                <li>Turut serta meningkatkan mutu pendidikan bagi seluruh lapisan masyarakat</li>
-                <li>Mengelola dan memberdayakan anak serta remaja dalam berbagai kegiatan produktif</li>
-              </ul>
-            </div>
+      <section id="visi-misi">
+        <div className="section-eyebrow reveal">Bab 3 · Arah Gerak</div>
+        <h2 className="section-title reveal">Visi &amp; Misi Strategis</h2>
+        <div className="vm-grid">
+          <div className="vm-card vm-dark reveal delay-1">
+            <h3>Visi</h3>
+            <p>Menjadi pusat literasi masyarakat yang mandiri, berdaya, dan bermanfaat bagi komunitas.</p>
+          </div>
+          <div className="vm-card reveal delay-2">
+            <h3>Misi</h3>
+            <ul>
+              <li>Memberdayakan potensi lingkungan sekitar.</li>
+              <li>Meningkatkan mutu pendidikan masyarakat.</li>
+              <li>Membentuk karakter produktif pada remaja.</li>
+            </ul>
           </div>
         </div>
       </section>

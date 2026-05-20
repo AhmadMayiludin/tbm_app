@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../assets/drive/logo_photo.jpg';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-
-  // Close menu when route changes
-  React.useEffect(() => {
-    setIsMenuOpen(false);
-  }, [location]);
+  const navItems = [
+    { to: '/', label: 'Beranda' },
+    { to: '/literasi', label: 'Ruang Literasi' },
+    { to: '/belajar', label: 'Ruang Belajar' },
+    { to: '/kegiatan', label: 'Jadwal Kegiatan' },
+    { to: '/panduan', label: 'Buku Panduan' },
+    { to: '/relawan', label: 'Jadi Relawan', cta: true },
+  ];
 
   return (
     <nav>
-      <Link to="/" className="nav-logo">Ruang Nalar<br/><span>& Nyala TBM</span></Link>
+      <Link to="/" className="nav-logo">
+        <img src={logo} alt="TBM Pustaka Berkiprah" />
+        <div className="nav-logo-text">Ruang Nalar<br/><span>& Nyala TBM</span></div>
+      </Link>
       <button 
         className={`hamburger ${isMenuOpen ? 'active' : ''}`} 
         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -23,11 +30,17 @@ function Navbar() {
         <span></span>
       </button>
       <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-        <li><Link to="/">Tentang</Link></li>
-        <li><Link to="/literasi">Literasi</Link></li>
-        <li><Link to="/belajar">Belajar</Link></li>
-        <li><Link to="/kegiatan">Kegiatan</Link></li>
-        <li><Link to="/relawan" className="nav-cta">Jadi Relawan</Link></li>
+        {navItems.map((item) => (
+          <li key={item.to}>
+            <Link
+              to={item.to}
+              className={`${location.pathname === item.to ? 'active' : ''} ${item.cta ? 'nav-cta' : ''}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item.label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );

@@ -1,120 +1,169 @@
-import React, { useState } from 'react';
-import { BookOpen, Scissors, Target, Book, Palette, Moon, HeartPulse, Shirt, PenTool, Sprout, Utensils, ShieldAlert, Laptop, Pen, Tent } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { BookOpen, Palette, Shirt, Sprout, Tent, Calculator, ChevronRight, X, Image as ImageIcon } from 'lucide-react';
+import literasiImg from '../assets/drive/kegiatan_1.jpg';
+import merajutImg from '../assets/drive/kegiatan_3.jpg';
+import picnicImg from '../assets/drive/kegiatan_5.jpg';
+import belajarGuideImg from '../assets/drive/belajar_2.jpg';
+import heroImg from '../assets/drive/kegiatan_2.jpg';
 
 function Belajar() {
   const [activeTab, setActiveTab] = useState('akademik');
+  const [selectedProgram, setSelectedProgram] = useState(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [activeTab]);
+
+  const programs = {
+    akademik: [
+      {
+        id: 'a1',
+        icon: <BookOpen />,
+        title: 'Belajar Membaca',
+        desc: 'Literasi dasar untuk anak prasekolah hingga SD.',
+        details: 'Peserta belajar mengenal bunyi huruf, membaca kata sederhana, menyimak cerita, lalu menceritakan kembali dengan bahasa sendiri.',
+        badge: 'Anak-anak',
+        image: literasiImg,
+        gallery: [literasiImg, belajarGuideImg],
+        class: 'icon-green',
+        graphic: 'Huruf, cerita, dan pojok baca',
+      },
+      {
+        id: 'a2',
+        icon: <Palette />,
+        title: 'Mewarnai & Menggambar',
+        desc: 'Mengembangkan kreativitas, fokus, dan motorik halus.',
+        details: 'Anak-anak diberi tema mingguan, contoh visual, dan kesempatan menjelaskan gambar yang mereka buat supaya berani bercerita.',
+        badge: 'Kreatif',
+        image: literasiImg,
+        gallery: [literasiImg, picnicImg],
+        class: 'icon-amber',
+        graphic: 'Warna, bentuk, dan cerita',
+      },
+      {
+        id: 'a3',
+        icon: <Calculator />,
+        title: 'Bimbingan Belajar',
+        desc: 'Pendampingan tugas sekolah dan latihan dasar.',
+        details: 'Relawan membantu peserta memahami materi sekolah, membaca soal, dan menyelesaikan latihan secara bertahap.',
+        badge: 'Pelajar',
+        image: heroImg,
+        gallery: [heroImg, literasiImg],
+        class: 'icon-blue',
+        graphic: 'Tugas, diskusi, dan latihan',
+      },
+    ],
+    keterampilan: [
+      {
+        id: 'k1',
+        icon: <Shirt />,
+        title: 'Kelas Merajut',
+        desc: 'Belajar merajut dari nol hingga menghasilkan produk.',
+        details: 'Peserta dikenalkan alat, pola dasar, teknik simpul, lalu diarahkan membuat karya sederhana seperti pouch, syal, atau tas kecil.',
+        badge: 'Remaja',
+        image: merajutImg,
+        gallery: [merajutImg, heroImg],
+        class: 'icon-pink',
+        graphic: 'Benang, pola, dan karya',
+      },
+      {
+        id: 'k2',
+        icon: <Sprout />,
+        title: 'Hidroponik',
+        desc: 'Menanam sayuran hidroponik bersama di pekarangan.',
+        details: 'Program ini mengenalkan literasi lingkungan, siklus tumbuh tanaman, dan kebiasaan merawat pangan dari rumah.',
+        badge: 'Umum',
+        image: merajutImg,
+        gallery: [merajutImg, picnicImg],
+        class: 'icon-green',
+        graphic: 'Bibit, air, dan panen',
+      },
+    ],
+    situasional: [
+      {
+        id: 's1',
+        icon: <Tent />,
+        title: 'Reading Picnic',
+        desc: 'Membaca bersama di taman terbuka secara berkala.',
+        details: 'Peserta membawa atau memilih buku, membaca santai, lalu berbagi kutipan favorit dalam suasana piknik keluarga.',
+        badge: 'Berkala',
+        image: picnicImg,
+        gallery: [picnicImg, literasiImg],
+        class: 'icon-purple',
+        graphic: 'Buku, tikar, dan ruang publik',
+      },
+    ],
+  };
 
   return (
     <section id="belajar">
-      <div style={{height: '64px'}}></div>
-      <div className="section-eyebrow">Ruang Belajar</div>
-      <h2 className="section-title">Program Pembelajaran</h2>
-      <p className="section-desc">Setiap program dirancang sesuai kebutuhan nyata masyarakat — fleksibel, kontekstual, dan memberdayakan.</p>
+      <div className="section-eyebrow reveal">Bab 5 · Ruang Belajar</div>
+      <h2 className="section-title reveal">Program Pembelajaran</h2>
+      <p className="section-desc reveal">Klik setiap program untuk melihat keterangan lengkap, gambar pendukung, dan alur kegiatan.</p>
 
-      <div className="belajar-tabs">
-        <button className={`tab-btn ${activeTab === 'akademik' ? 'active' : ''}`} onClick={() => setActiveTab('akademik')} style={{display: 'flex', alignItems: 'center', gap: '0.4rem'}}><BookOpen size={16} /> Literasi Dasar</button>
-        <button className={`tab-btn ${activeTab === 'keterampilan' ? 'active' : ''}`} onClick={() => setActiveTab('keterampilan')} style={{display: 'flex', alignItems: 'center', gap: '0.4rem'}}><Scissors size={16} /> Pemberdayaan Keterampilan</button>
-        <button className={`tab-btn ${activeTab === 'situasional' ? 'active' : ''}`} onClick={() => setActiveTab('situasional')} style={{display: 'flex', alignItems: 'center', gap: '0.4rem'}}><Target size={16} /> Kelas Situasional</button>
+      <div className="belajar-tabs reveal">
+        <button className={`tab-btn ${activeTab === 'akademik' ? 'active' : ''}`} onClick={() => setActiveTab('akademik')}>Literasi Dasar</button>
+        <button className={`tab-btn ${activeTab === 'keterampilan' ? 'active' : ''}`} onClick={() => setActiveTab('keterampilan')}>Keterampilan</button>
+        <button className={`tab-btn ${activeTab === 'situasional' ? 'active' : ''}`} onClick={() => setActiveTab('situasional')}>Situasional</button>
       </div>
 
-      <div className={`tab-content ${activeTab === 'akademik' ? 'active' : ''}`}>
-        <div className="program-grid">
-          <div className="program-card">
-            <div className="program-emoji"><Book size={32} color="var(--sage)" strokeWidth={1.5} /></div>
-            <div className="program-title">Belajar Membaca &amp; Menulis</div>
-            <p className="program-desc">Kegiatan literasi dasar untuk anak-anak usia prasekolah hingga SD, dengan pendekatan menyenangkan melalui gambar dan cerita.</p>
-            <span className="program-badge">Anak-anak</span>
-          </div>
-          <div className="program-card">
-            <div className="program-emoji"><Palette size={32} color="var(--amber)" strokeWidth={1.5} /></div>
-            <div className="program-title">Mewarnai &amp; Menggambar</div>
-            <p className="program-desc">Mengembangkan kreativitas dan motorik halus anak-anak melalui kegiatan seni yang terstruktur dan menyenangkan setiap Sabtu.</p>
-            <span className="program-badge">Anak-anak</span>
-          </div>
-          <div className="program-card">
-            <div className="program-emoji"><BookOpen size={32} color="var(--earth)" strokeWidth={1.5} /></div>
-            <div className="program-title">Read Aloud bersama Adik</div>
-            <p className="program-desc">Kakak-kakak remaja membacakan cerita untuk adik-adik kecil — melatih kepercayaan diri sekaligus memupuk budaya literasi sejak dini.</p>
-            <span className="program-badge">Remaja &amp; Anak</span>
-          </div>
-          <div className="program-card">
-            <div className="program-emoji"><Moon size={32} color="#5C7A62" strokeWidth={1.5} /></div>
-            <div className="program-title">Kajian Keagamaan &amp; Iqra</div>
-            <p className="program-desc">Program belajar membaca Al-Quran dan pengajian rutin bagi para lansia, dilaksanakan setiap hari Senin dengan suasana akrab dan penuh semangat.</p>
-            <span className="program-badge">Lansia</span>
-          </div>
-          <div className="program-card">
-            <div className="program-emoji"><HeartPulse size={32} color="#D4882B" strokeWidth={1.5} /></div>
-            <div className="program-title">Edukasi Gizi &amp; Kesehatan</div>
-            <p className="program-desc">Informasi dan diskusi tentang pola makan sehat, gizi seimbang, dan perawatan kesehatan dasar yang penting bagi lansia dan keluarga.</p>
-            <span className="program-badge">Lansia</span>
+      <div className="grid-3">
+        {programs[activeTab].map((program, index) => (
+          <button
+            key={program.id}
+            className="program-card reveal"
+            style={{ animationDelay: `${index * 0.1}s` }}
+            onClick={() => setSelectedProgram(program)}
+          >
+            <div className="program-image">
+              <img src={program.image} alt={`Gambar program ${program.title}`} />
+              <span className="program-badge">{program.badge}</span>
+            </div>
+            <div className="program-content">
+              <div className={`program-emoji ${program.class}`}>{program.icon}</div>
+              <h3>{program.title}</h3>
+              <p>{program.desc}</p>
+              <div className="program-graphic">
+                <ImageIcon size={16} />
+                <span>{program.graphic}</span>
+              </div>
+              <div className="program-more">Lihat keterangan <ChevronRight size={16} /></div>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {selectedProgram && (
+        <div className="program-modal" role="dialog" aria-modal="true">
+          <div className="program-modal-panel">
+            <button className="modal-close" onClick={() => setSelectedProgram(null)} aria-label="Tutup detail program"><X /></button>
+            <div className="program-modal-grid">
+              <div className="program-modal-gallery">
+                {selectedProgram.gallery.map((image, index) => (
+                  <img key={`${selectedProgram.id}-${index}`} src={image} alt={`Dokumentasi ${selectedProgram.title} ${index + 1}`} />
+                ))}
+              </div>
+              <div>
+                <div className={`program-emoji ${selectedProgram.class}`}>{selectedProgram.icon}</div>
+                <div className="section-eyebrow">Detail Program</div>
+                <h2 className="section-title">{selectedProgram.title}</h2>
+                <p className="program-modal-desc">{selectedProgram.details}</p>
+                <div className="detail-steps">
+                  <span>1. Pembukaan dan pengenalan materi</span>
+                  <span>2. Praktik bersama relawan</span>
+                  <span>3. Refleksi hasil belajar</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div className={`tab-content ${activeTab === 'keterampilan' ? 'active' : ''}`}>
-        <div className="program-grid">
-          <div className="program-card">
-            <div className="program-emoji"><Shirt size={32} color="var(--earth)" strokeWidth={1.5} /></div>
-            <div className="program-title">Kelas Merajut</div>
-            <p className="program-desc">Remaja belajar merajut dari nol hingga menghasilkan produk kreatif yang bisa dipakai atau dijual — keterampilan tangan yang bernilai ekonomi.</p>
-            <span className="program-badge amber-badge">Remaja</span>
-          </div>
-          <div className="program-card">
-            <div className="program-emoji"><PenTool size={32} color="var(--sage)" strokeWidth={1.5} /></div>
-            <div className="program-title">Kerajinan Kain Perca</div>
-            <p className="program-desc">Mengubah sisa kain menjadi karya berguna — tas kecil, sarung bantal, dan produk kreatif lainnya. Melatih kreativitas sekaligus kepedulian lingkungan.</p>
-            <span className="program-badge amber-badge">Umum</span>
-          </div>
-          <div className="program-card">
-            <div className="program-emoji"><Sprout size={32} color="#5C7A62" strokeWidth={1.5} /></div>
-            <div className="program-title">Hidroponik &amp; Ketahanan Pangan</div>
-            <p className="program-desc">Menanam sayuran secara hidroponik bersama-sama, lalu memanennya dan memasak bersama. Belajar mandiri pangan dari pekarangan sendiri.</p>
-            <span className="program-badge amber-badge">Ibu &amp; Remaja</span>
-          </div>
-          <div className="program-card">
-            <div className="program-emoji"><Scissors size={32} color="var(--amber)" strokeWidth={1.5} /></div>
-            <div className="program-title">Tempat Pensil Kain Flanel</div>
-            <p className="program-desc">Pelatihan membuat tempat pensil dari kain flanel yang bisa menjadi produk kreatif bernilai jual, melatih keterampilan dan kewirausahaan dasar.</p>
-            <span className="program-badge amber-badge">Anak &amp; Remaja</span>
-          </div>
-          <div className="program-card">
-            <div className="program-emoji"><Utensils size={32} color="#D4882B" strokeWidth={1.5} /></div>
-            <div className="program-title">Membuat &amp; Berbagi Takjil</div>
-            <p className="program-desc">Proyek kolaboratif di bulan Ramadan — bersama-sama membuat takjil lalu membagikannya kepada masyarakat sekitar sebagai wujud kepedulian sosial.</p>
-            <span className="program-badge amber-badge">Semua Usia</span>
-          </div>
-        </div>
-      </div>
-
-      <div className={`tab-content ${activeTab === 'situasional' ? 'active' : ''}`}>
-        <div className="program-grid">
-          <div className="program-card">
-            <div className="program-emoji"><ShieldAlert size={32} color="#D84B4B" strokeWidth={1.5} /></div>
-            <div className="program-title">Penyuluhan Bahaya Narkoba</div>
-            <p className="program-desc">Dilaksanakan bekerja sama dengan BNN sebagai respons nyata atas permasalahan di lingkungan sekitar. Program ini menjadi bukti TBM hadir merespons kebutuhan.</p>
-            <span className="program-badge">Responsif</span>
-          </div>
-          <div className="program-card">
-            <div className="program-emoji"><Laptop size={32} color="var(--earth)" strokeWidth={1.5} /></div>
-            <div className="program-title">Pendampingan Belajar Daring</div>
-            <p className="program-desc">Program yang lahir saat pandemi COVID-19 untuk membantu anak-anak yang tidak memiliki perangkat belajar daring, agar tak tertinggal dari pendidikan.</p>
-            <span className="program-badge">Kontekstual</span>
-          </div>
-          <div className="program-card">
-            <div className="program-emoji"><Pen size={32} color="var(--amber)" strokeWidth={1.5} /></div>
-            <div className="program-title">Tutor Sebaya Literasi</div>
-            <p className="program-desc">Program tutor sebaya bagi siswa SMP yang mengalami ketertinggalan membaca-menulis akibat pandemi. Dihentikan saat peserta sudah berhasil mandiri.</p>
-            <span className="program-badge">Berbasis Kebutuhan</span>
-          </div>
-          <div className="program-card">
-            <div className="program-emoji"><Tent size={32} color="var(--sage)" strokeWidth={1.5} /></div>
-            <div className="program-title">Reading Picnic</div>
-            <p className="program-desc">Setiap tiga bulan, anak-anak diajak ke taman kota untuk membaca bersama di alam terbuka — menjadikan literasi sebagai pengalaman yang menyenangkan.</p>
-            <span className="program-badge">Berkala</span>
-          </div>
-        </div>
-      </div>
+      )}
     </section>
   );
 }
