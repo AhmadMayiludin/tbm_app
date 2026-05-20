@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Clock, MapPin, Star } from 'lucide-react';
+import { MapPin, Star } from 'lucide-react';
 import kegiatanSatu from '../assets/drive/kegiatan_1.jpg';
 import kegiatanDua from '../assets/drive/kegiatan_2.jpg';
 import kegiatanLima from '../assets/drive/kegiatan_5.jpg';
@@ -16,9 +16,9 @@ function Kegiatan() {
   }, []);
 
   const jadwal = [
-    { day: 'Sabtu', date: '08', time: '09:00 - 11:00', title: 'Kelas Literasi & Mewarnai', desc: 'Kegiatan rutin mingguan untuk anak-anak prasekolah dan SD.' },
-    { day: 'Minggu', date: '09', time: '14:00 - 16:00', title: 'Kelas Merajut Bersama', desc: 'Belajar membuat berbagai kerajinan dari benang untuk remaja.' },
-    { day: 'Senin', date: '10', time: '16:00 - 17:30', title: 'Bimbingan Belajar Gratis', desc: 'Bantuan belajar untuk mata pelajaran sekolah bagi yang membutuhkan.' },
+    { day: 'Sabtu', date: '08', title: 'Kelas Literasi & Mewarnai', desc: 'Kegiatan rutin mingguan untuk anak-anak prasekolah dan SD.' },
+    { day: 'Minggu', date: '09', title: 'Kelas Merajut Bersama', desc: 'Belajar membuat berbagai kerajinan dari benang untuk remaja.' },
+    { day: 'Senin', date: '10', title: 'Bimbingan Belajar Gratis', desc: 'Bantuan belajar untuk mata pelajaran sekolah bagi yang membutuhkan.' },
   ];
 
   const dokumentasi = [
@@ -45,7 +45,6 @@ function Kegiatan() {
                 <h3 className="jadwal-title">{j.title}</h3>
                 <p className="jadwal-desc">{j.desc}</p>
                 <div className="jadwal-meta">
-                  <span><Clock size={14}/> {j.time}</span>
                   <span><MapPin size={14}/> TBM Pustaka Berkiprah</span>
                 </div>
               </div>

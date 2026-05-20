@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { BookOpen, Palette, Shirt, Sprout, Tent, Calculator, ChevronRight, X, Image as ImageIcon } from 'lucide-react';
-import literasiImg from '../assets/drive/kegiatan_1.jpg';
-import merajutImg from '../assets/drive/kegiatan_3.jpg';
+import membacaAltImg from '../assets/drive/drive_extra_4.jpg';
+import membacaStoryImg from '../assets/drive/drive_extra_7.jpg';
+import mewarnaiImg from '../assets/drive/drive_extra_6.jpg';
+import merajutImg from '../assets/drive/drive_extra_2.jpg';
 import picnicImg from '../assets/drive/kegiatan_5.jpg';
-import belajarGuideImg from '../assets/drive/belajar_2.jpg';
 import heroImg from '../assets/drive/kegiatan_2.jpg';
 
 function Belajar() {
@@ -26,37 +27,52 @@ function Belajar() {
         id: 'a1',
         icon: <BookOpen />,
         title: 'Belajar Membaca',
-        desc: 'Literasi dasar untuk anak prasekolah hingga SD.',
-        details: 'Peserta belajar mengenal bunyi huruf, membaca kata sederhana, menyimak cerita, lalu menceritakan kembali dengan bahasa sendiri.',
+        desc: 'Pendampingan literasi dasar dari mengenal huruf sampai memahami isi bacaan sederhana.',
+        details: 'Program Belajar Membaca membantu anak membangun kebiasaan membaca secara bertahap. Peserta diajak mengenal bunyi huruf, menyusun suku kata, membaca kata sederhana, mendengarkan cerita, lalu menceritakan kembali isi bacaan dengan bahasa sendiri. Relawan tidak hanya mengejar kelancaran membaca, tetapi juga memastikan anak memahami makna bacaan, berani bertanya, dan merasa bahwa buku adalah teman belajar yang menyenangkan.',
         badge: 'Anak-anak',
-        image: literasiImg,
-        gallery: [literasiImg, belajarGuideImg],
+        image: membacaAltImg,
+        gallery: [membacaAltImg, membacaStoryImg],
         class: 'icon-green',
         graphic: 'Huruf, cerita, dan pojok baca',
+        steps: [
+          'Pembukaan dilakukan dengan mengenalkan buku, gambar, dan kata kunci agar anak tertarik sebelum mulai membaca.',
+          'Relawan mendampingi anak membaca pelan-pelan, membetulkan pelafalan, dan memberi contoh cara memahami isi kalimat.',
+          'Anak diajak mengulang cerita, menyebut tokoh atau pesan bacaan, lalu diberi apresiasi agar percaya diri.',
+        ],
       },
       {
         id: 'a2',
         icon: <Palette />,
         title: 'Mewarnai & Menggambar',
-        desc: 'Mengembangkan kreativitas, fokus, dan motorik halus.',
-        details: 'Anak-anak diberi tema mingguan, contoh visual, dan kesempatan menjelaskan gambar yang mereka buat supaya berani bercerita.',
+        desc: 'Ruang kreatif untuk melatih fokus, koordinasi tangan, imajinasi, dan keberanian bercerita.',
+        details: 'Kegiatan Mewarnai & Menggambar dibuat sebagai pintu masuk belajar yang ringan untuk anak-anak. Peserta diberi tema gambar, alat warna, dan contoh sederhana, lalu diberi kebebasan memilih warna serta menambahkan cerita pada gambar mereka. Kegiatan ini membantu motorik halus, fokus, kesabaran, pengenalan warna, serta kemampuan mengungkapkan pendapat di depan teman-teman.',
         badge: 'Kreatif',
-        image: literasiImg,
-        gallery: [literasiImg, picnicImg],
+        image: mewarnaiImg,
+        gallery: [mewarnaiImg, membacaAltImg],
         class: 'icon-amber',
         graphic: 'Warna, bentuk, dan cerita',
+        steps: [
+          'Relawan membuka kegiatan dengan tema sederhana seperti keluarga, lingkungan, hewan, atau tokoh cerita.',
+          'Anak mewarnai atau menggambar sambil didampingi agar dapat memegang alat warna, memilih kombinasi warna, dan menyelesaikan karya.',
+          'Di akhir kegiatan, anak diberi kesempatan menunjukkan gambar dan menjelaskan apa yang mereka buat.',
+        ],
       },
       {
         id: 'a3',
         icon: <Calculator />,
         title: 'Bimbingan Belajar',
-        desc: 'Pendampingan tugas sekolah dan latihan dasar.',
-        details: 'Relawan membantu peserta memahami materi sekolah, membaca soal, dan menyelesaikan latihan secara bertahap.',
+        desc: 'Pendampingan tugas sekolah dan latihan dasar untuk anak yang membutuhkan teman belajar.',
+        details: 'Bimbingan Belajar membantu peserta memahami materi sekolah dengan suasana yang lebih santai. Relawan mendampingi anak membaca instruksi soal, memahami konsep dasar, mengerjakan latihan, dan mengecek kembali jawabannya. Fokusnya bukan sekadar menyelesaikan tugas, tetapi melatih anak berani mencoba, tidak takut salah, dan terbiasa menyusun cara berpikir yang runtut.',
         badge: 'Pelajar',
         image: heroImg,
-        gallery: [heroImg, literasiImg],
+        gallery: [heroImg, membacaAltImg],
         class: 'icon-blue',
         graphic: 'Tugas, diskusi, dan latihan',
+        steps: [
+          'Peserta membawa tugas atau materi yang belum dipahami, lalu relawan membantu memetakan bagian yang sulit.',
+          'Latihan dilakukan bertahap dengan contoh soal, tanya jawab, dan penjelasan ulang menggunakan bahasa sederhana.',
+          'Anak diajak menyimpulkan cara menyelesaikan soal agar bisa mengulanginya sendiri di rumah.',
+        ],
       },
     ],
     keterampilan: [
@@ -64,25 +80,35 @@ function Belajar() {
         id: 'k1',
         icon: <Shirt />,
         title: 'Kelas Merajut',
-        desc: 'Belajar merajut dari nol hingga menghasilkan produk.',
-        details: 'Peserta dikenalkan alat, pola dasar, teknik simpul, lalu diarahkan membuat karya sederhana seperti pouch, syal, atau tas kecil.',
+        desc: 'Kelas keterampilan untuk membuat karya sederhana yang rapi, sabar, dan bernilai guna.',
+        details: 'Kelas Merajut mengenalkan keterampilan tangan sebagai bagian dari literasi produktif. Peserta belajar mengenal alat dan bahan, mengikuti pola dasar, menjaga kerapian, serta menyelesaikan karya kecil secara bertahap. Program ini melatih ketekunan, konsentrasi, kerja sama, dan rasa bangga karena peserta bisa membawa pulang hasil karya sendiri.',
         badge: 'Remaja',
         image: merajutImg,
         gallery: [merajutImg, heroImg],
         class: 'icon-pink',
         graphic: 'Benang, pola, dan karya',
+        steps: [
+          'Peserta dikenalkan alat, bahan, contoh karya, dan cara menjaga keamanan saat menggunakan alat keterampilan.',
+          'Relawan memperagakan teknik dasar, lalu peserta mencoba mengikuti pola sambil dibimbing satu per satu.',
+          'Karya yang selesai dievaluasi bersama dari sisi kerapian, fungsi, dan kemungkinan dikembangkan menjadi produk sederhana.',
+        ],
       },
       {
         id: 'k2',
         icon: <Sprout />,
         title: 'Hidroponik',
-        desc: 'Menanam sayuran hidroponik bersama di pekarangan.',
-        details: 'Program ini mengenalkan literasi lingkungan, siklus tumbuh tanaman, dan kebiasaan merawat pangan dari rumah.',
+        desc: 'Belajar merawat tanaman dan memahami lingkungan melalui praktik sederhana.',
+        details: 'Program Hidroponik memperkenalkan literasi lingkungan lewat kegiatan menanam yang dekat dengan kehidupan sehari-hari. Peserta mengenal bibit, air, nutrisi, cahaya, dan cara merawat tanaman sampai tumbuh. Dari kegiatan ini, anak dan warga belajar bahwa pangan sehat bisa dimulai dari rumah, sekaligus memahami pentingnya disiplin merawat lingkungan.',
         badge: 'Umum',
         image: merajutImg,
         gallery: [merajutImg, picnicImg],
         class: 'icon-green',
         graphic: 'Bibit, air, dan panen',
+        steps: [
+          'Peserta mengenal alat, bibit, media tanam, dan kebutuhan dasar tanaman hidroponik.',
+          'Praktik dilakukan dengan menyiapkan wadah, menanam bibit, serta mencatat perkembangan tanaman.',
+          'Peserta berdiskusi tentang manfaat pangan sehat dan cara menerapkan kebiasaan merawat tanaman di rumah.',
+        ],
       },
     ],
     situasional: [
@@ -90,13 +116,18 @@ function Belajar() {
         id: 's1',
         icon: <Tent />,
         title: 'Reading Picnic',
-        desc: 'Membaca bersama di taman terbuka secara berkala.',
-        details: 'Peserta membawa atau memilih buku, membaca santai, lalu berbagi kutipan favorit dalam suasana piknik keluarga.',
+        desc: 'Kegiatan membaca santai di ruang terbuka agar buku terasa dekat dengan keluarga dan komunitas.',
+        details: 'Reading Picnic membawa kegiatan membaca keluar dari ruang belajar biasa. Peserta memilih buku, duduk bersama di area terbuka, membaca dengan suasana santai, lalu berbagi cerita atau kutipan yang paling mereka sukai. Kegiatan ini membuat literasi terasa lebih akrab, menyenangkan, dan bisa dilakukan bersama keluarga, teman sebaya, maupun komunitas.',
         badge: 'Berkala',
         image: picnicImg,
-        gallery: [picnicImg, literasiImg],
+        gallery: [picnicImg, membacaAltImg],
         class: 'icon-purple',
         graphic: 'Buku, tikar, dan ruang publik',
+        steps: [
+          'Peserta memilih buku atau bahan bacaan yang sesuai minatnya sebelum kegiatan dimulai.',
+          'Sesi membaca dilakukan santai dengan pendampingan relawan agar anak tetap fokus dan nyaman.',
+          'Kegiatan ditutup dengan berbagi cerita, menyebut bagian bacaan favorit, atau membuat refleksi singkat.',
+        ],
       },
     ],
   };
@@ -155,9 +186,9 @@ function Belajar() {
                 <h2 className="section-title">{selectedProgram.title}</h2>
                 <p className="program-modal-desc">{selectedProgram.details}</p>
                 <div className="detail-steps">
-                  <span>1. Pembukaan dan pengenalan materi</span>
-                  <span>2. Praktik bersama relawan</span>
-                  <span>3. Refleksi hasil belajar</span>
+                  {selectedProgram.steps.map((step, index) => (
+                    <span key={step}>{index + 1}. {step}</span>
+                  ))}
                 </div>
               </div>
             </div>
