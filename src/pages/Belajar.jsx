@@ -5,7 +5,7 @@ import membacaStoryImg from '../assets/drive/drive_extra_7.jpg';
 import mewarnaiImg from '../assets/drive/drive_extra_6.jpg';
 import merajutImg from '../assets/drive/kelas_merajut_baru.jpeg';
 import hidroponikImg from '../assets/drive/hidroponik_baru.jpeg';
-import picnicImg from '../assets/drive/kegiatan_5.jpg';
+import picnicImg from '../assets/drive/reading_picnic_baru.jpeg';
 import heroImg from '../assets/drive/kegiatan_2.jpg';
 
 function Belajar() {
@@ -121,7 +121,7 @@ function Belajar() {
         details: 'Reading Picnic membawa kegiatan membaca keluar dari ruang belajar biasa. Peserta memilih buku, duduk bersama di area terbuka, membaca dengan suasana santai, lalu berbagi cerita atau kutipan yang paling mereka sukai. Kegiatan ini membuat literasi terasa lebih akrab, menyenangkan, dan bisa dilakukan bersama keluarga, teman sebaya, maupun komunitas.',
         badge: 'Berkala',
         image: picnicImg,
-        gallery: [picnicImg, membacaAltImg],
+        gallery: [picnicImg],
         class: 'icon-purple',
         graphic: 'Buku, tikar, dan ruang publik',
         steps: [
