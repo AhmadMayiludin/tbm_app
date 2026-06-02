@@ -10,7 +10,7 @@ function Navbar() {
     { to: '/literasi', label: 'Ruang Literasi' },
     { to: '/belajar', label: 'Ruang Belajar' },
     { to: '/kegiatan', label: 'Jadwal Kegiatan' },
-    { to: '/panduan', label: 'Buku Panduan' },
+    { to: '/sumbangan-buku', label: 'Sumbangan Buku' },
     { to: '/relawan', label: 'Jadi Relawan', cta: true },
   ];
 

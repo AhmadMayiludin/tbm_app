@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, ArrowRight, Sparkles, Zap, ShieldCheck, Building2, Phone, BookOpen, Users, CalendarDays } from 'lucide-react';
+import { MapPin, Sparkles, Zap, ShieldCheck, Building2, Phone, Gift } from 'lucide-react';
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import heroImg from '../assets/drive/kegiatan_1.jpg';
 import logo from '../assets/drive/logo_photo.jpg';
@@ -41,7 +41,7 @@ function Home() {
           </p>
           <div className="hero-actions reveal delay-3">
             <Link to="/belajar" className="btn-primary">Mulai Belajar</Link>
-            <Link to="/panduan" className="btn-ghost">Buka Panduan <ArrowRight size={18} /></Link>
+            <Link to="/sumbangan-buku" className="btn-ghost">Sumbang Buku <Gift size={18} /></Link>
           </div>
 
           <div className="hero-stats reveal delay-3">
@@ -64,16 +64,13 @@ function Home() {
           <div className="hero-image-float">
             <img src={heroImg} alt="Dokumentasi kegiatan TBM Pustaka Berkiprah" />
           </div>
-          <div className="floating-note note-a"><BookOpen size={18} /> Literasi</div>
-          <div className="floating-note note-b"><Users size={18} /> Komunitas</div>
-          <div className="floating-note note-c"><CalendarDays size={18} /> Kegiatan</div>
         </div>
       </section>
 
       <section id="features">
         <div className="section-eyebrow reveal">Bab 1 · Dasar Program</div>
         <h2 className="section-title reveal">Literasi yang Memberdayakan</h2>
-        <p className="section-desc reveal">Setiap ruang di platform ini disusun sebagai bab: profil lembaga, ruang literasi, ruang belajar, kegiatan, panduan, dan relawan.</p>
+        <p className="section-desc reveal">Setiap ruang di platform ini disusun sebagai bab: profil lembaga, ruang literasi, ruang belajar, kegiatan, sumbangan buku, dan relawan.</p>
         <div className="features-grid">
           <div className="feature-card reveal delay-1">
             <div className="feature-icon icon-amber"><Sparkles size={28}/></div>

@@ -5,7 +5,7 @@ import Literasi from './pages/Literasi';
 import Belajar from './pages/Belajar';
 import Kegiatan from './pages/Kegiatan';
 import Relawan from './pages/Relawan';
-import Panduan from './pages/Panduan';
+import SumbanganBuku from './pages/SumbanganBuku';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <Route path="belajar" element={<Belajar />} />
           <Route path="kegiatan" element={<Kegiatan />} />
           <Route path="relawan" element={<Relawan />} />
-          <Route path="panduan" element={<Panduan />} />
+          <Route path="sumbangan-buku" element={<SumbanganBuku />} />
         </Route>
       </Routes>
     </BrowserRouter>
