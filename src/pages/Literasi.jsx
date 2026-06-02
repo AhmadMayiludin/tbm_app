@@ -5,15 +5,15 @@ import literasiKognitifImg from '../assets/drive/emot_2.jpg';
 import ekoliterasiImg from '../assets/drive/emot_3.jpg';
 import remajaImg from '../assets/drive/emot_4.jpg';
 import koleksiImg from '../assets/drive/emot_5.jpg';
-import agamaImg from '../assets/drive/emot_6.jpg';
+import agamaImg from '../assets/drive/drive_extra_1.jpg';
 
 const articles = {
   art1: { title: 'Membangun Budaya Baca di Rumah', content: 'Literasi dimulai dari rumah. Menciptakan pojok baca yang nyaman dan meluangkan waktu 15 menit setiap hari untuk membaca bersama anak dapat membangun kecintaan mereka pada buku seumur hidup.', icon: <Book />, color: 'icon-blue', image: literasiDasarImg },
   art2: { title: 'Pentingnya Literasi Digital', content: 'Di era informasi, kemampuan menyaring berita dan menggunakan perangkat digital secara bijak sangat krusial agar terhindar dari hoax dan penipuan siber.', icon: <Globe />, color: 'icon-purple', image: literasiKognitifImg },
-  art3: { title: 'Belajar dari Alam (Ekoliterasi)', content: 'Memahami ekosistem sekitar membantu kita lebih menghargai lingkungan. TBM mengajarkan budidaya tanaman sebagai bentuk literasi alam.', icon: <Leaf />, color: 'icon-green', image: ekoliterasiImg },
-  art4: { title: 'Remaja dan Literasi Kritis', content: 'Mengajak remaja berdiskusi tentang isu sosial melalui buku atau film dapat mengasah kemampuan berpikir kritis dan empati mereka.', icon: <Brain />, color: 'icon-pink', image: remajaImg },
+  art3: { title: 'Belajar dari Alam', content: 'Kegiatan bagi anak dan remaja usia 7–15 tahun untuk belajar mengenal dan merawat lingkungan melalui praktik menanam serta pengamatan alam. Kegiatan ini menumbuhkan kepedulian dan tanggung jawab terhadap lingkungan sejak dini.', icon: <Leaf />, color: 'icon-green', image: ekoliterasiImg },
+  art4: { title: 'Ruang Literasi untuk Anak dan Remaja', content: 'Anak-anak dan remaja usia 7–15 tahun berkumpul untuk membaca, menulis, dan berbagi cerita bersama. Melalui kegiatan yang interaktif, mereka belajar mengembangkan gagasan, mengekspresikan diri, dan menumbuhkan kecintaan terhadap literasi.', icon: <Brain />, color: 'icon-pink', image: remajaImg },
   art5: { title: 'Koleksi Buku di TBM Kami', content: 'Kami memiliki lebih dari 1.200 koleksi buku mulai dari cerita anak, pengetahuan umum, hingga keterampilan praktis yang bisa dipinjam secara gratis.', icon: <Library />, color: 'icon-amber', image: koleksiImg },
-  art6: { title: 'Mengaji adalah Literasi Terdekat', content: 'Dalam konteks masyarakat kami, belajar mengaji adalah bentuk literasi dasar yang paling dekat dengan kehidupan sehari-hari.', icon: <Landmark />, color: 'icon-green', image: agamaImg }
+  art6: { title: 'Mengaji adalah Literasi Terdekat', content: "Kegiatan ini biasanya untuk lansia dalam mengembangkan kemampuan membaca melalui pembelajaran Al-Qur'an. Selain memperkuat pemahaman keagamaan, kegiatan ini menjadi bagian dari upaya meningkatkan literasi dasar di masyarakat.", icon: <Landmark />, color: 'icon-green', image: agamaImg }
 };
 
 function Literasi() {

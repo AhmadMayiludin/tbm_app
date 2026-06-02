@@ -202,10 +202,7 @@ section { padding: 120px 8% 86px; position: relative; }
 .detail-steps span { background: var(--soft); border-radius: 8px; padding: 0.85rem 1rem; font-weight: 800; }
 
 .kegiatan-layout { display: grid; grid-template-columns: 1fr 360px; gap: 2rem; }
-.jadwal-item { display: flex; gap: 1.2rem; padding: 1.25rem; margin-bottom: 1rem; }
-.jadwal-day { background: var(--teal-dark); color: white; border-radius: 8px; padding: 0.8rem; text-align: center; min-width: 78px; align-self: flex-start; }
-.jadwal-day-name { font-size: 0.72rem; opacity: 0.85; font-weight: 800; }
-.jadwal-day-short { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; }
+.jadwal-item { display: block; padding: 1.45rem 1.55rem; margin-bottom: 1rem; }
 .jadwal-meta { margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.85rem; color: var(--muted); }
 .jadwal-meta span { display: flex; align-items: center; gap: 0.4rem; }
 .kegiatan-highlight { background: var(--teal-dark); color: white; padding: 1.5rem; border-radius: 8px; align-self: start; }

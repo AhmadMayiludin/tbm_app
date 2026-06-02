@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { MapPin, Star } from 'lucide-react';
 import kegiatanSatu from '../assets/drive/kegiatan_1.jpg';
 import kegiatanDua from '../assets/drive/kegiatan_2.jpg';
-import kegiatanLima from '../assets/drive/kegiatan_5.jpg';
+import kegiatanLima from '../assets/drive/reading_picnic_baru.jpeg';
 
 function Kegiatan() {
   useEffect(() => {
@@ -16,9 +16,9 @@ function Kegiatan() {
   }, []);
 
   const jadwal = [
-    { day: 'Sabtu', date: '08', title: 'Kelas Literasi & Mewarnai', desc: 'Kegiatan rutin mingguan untuk anak-anak prasekolah dan SD.' },
-    { day: 'Minggu', date: '09', title: 'Kelas Merajut Bersama', desc: 'Belajar membuat berbagai kerajinan dari benang untuk remaja.' },
-    { day: 'Senin', date: '10', title: 'Bimbingan Belajar Gratis', desc: 'Bantuan belajar untuk mata pelajaran sekolah bagi yang membutuhkan.' },
+    { title: 'Kelas Literasi & Mewarnai', desc: 'Kegiatan rutin mingguan untuk anak-anak prasekolah dan SD.' },
+    { title: 'Kelas Merajut Bersama', desc: 'Belajar membuat berbagai kerajinan dari benang untuk remaja.' },
+    { title: 'Kegiatan Literasi Iqra', desc: 'Kegiatan aksara yang diikuti oleh lansia di TBM Pustaka Berkiprah merupakan membaca Iqra dan Alquran sebagai melek literasi dalam konteks Alquran yang diikuti oleh peserta lansia.' },
   ];
 
   const dokumentasi = [
@@ -37,10 +37,6 @@ function Kegiatan() {
         <div className="jadwal-list">
           {jadwal.map((j, index) => (
             <div key={j.title} className="jadwal-item reveal" style={{ animationDelay: `${index * 0.1}s` }}>
-              <div className="jadwal-day">
-                <div className="jadwal-day-name">{j.day}</div>
-                <div className="jadwal-day-short">{j.date}</div>
-              </div>
               <div className="jadwal-info">
                 <h3 className="jadwal-title">{j.title}</h3>
                 <p className="jadwal-desc">{j.desc}</p>

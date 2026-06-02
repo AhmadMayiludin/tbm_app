@@ -3,7 +3,8 @@ import { BookOpen, Palette, Shirt, Sprout, Tent, Calculator, ChevronRight, X, Im
 import membacaAltImg from '../assets/drive/drive_extra_4.jpg';
 import membacaStoryImg from '../assets/drive/drive_extra_7.jpg';
 import mewarnaiImg from '../assets/drive/drive_extra_6.jpg';
-import merajutImg from '../assets/drive/drive_extra_2.jpg';
+import merajutImg from '../assets/drive/kelas_merajut_baru.jpeg';
+import hidroponikImg from '../assets/drive/hidroponik_baru.jpeg';
 import picnicImg from '../assets/drive/kegiatan_5.jpg';
 import heroImg from '../assets/drive/kegiatan_2.jpg';
 
@@ -84,7 +85,7 @@ function Belajar() {
         details: 'Kelas Merajut mengenalkan keterampilan tangan sebagai bagian dari literasi produktif. Peserta belajar mengenal alat dan bahan, mengikuti pola dasar, menjaga kerapian, serta menyelesaikan karya kecil secara bertahap. Program ini melatih ketekunan, konsentrasi, kerja sama, dan rasa bangga karena peserta bisa membawa pulang hasil karya sendiri.',
         badge: 'Remaja',
         image: merajutImg,
-        gallery: [merajutImg, heroImg],
+        gallery: [merajutImg],
         class: 'icon-pink',
         graphic: 'Benang, pola, dan karya',
         steps: [
@@ -100,8 +101,8 @@ function Belajar() {
         desc: 'Belajar merawat tanaman dan memahami lingkungan melalui praktik sederhana.',
         details: 'Program Hidroponik memperkenalkan literasi lingkungan lewat kegiatan menanam yang dekat dengan kehidupan sehari-hari. Peserta mengenal bibit, air, nutrisi, cahaya, dan cara merawat tanaman sampai tumbuh. Dari kegiatan ini, anak dan warga belajar bahwa pangan sehat bisa dimulai dari rumah, sekaligus memahami pentingnya disiplin merawat lingkungan.',
         badge: 'Umum',
-        image: merajutImg,
-        gallery: [merajutImg, picnicImg],
+        image: hidroponikImg,
+        gallery: [hidroponikImg],
         class: 'icon-green',
         graphic: 'Bibit, air, dan panen',
         steps: [
