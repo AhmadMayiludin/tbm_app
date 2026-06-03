@@ -18,7 +18,7 @@ function Kegiatan() {
   const jadwal = [
     { title: 'Kelas Literasi & Mewarnai', desc: 'Kegiatan rutin mingguan untuk anak-anak prasekolah dan SD.' },
     { title: 'Kelas Merajut Bersama', desc: 'Belajar membuat berbagai kerajinan dari benang untuk remaja.' },
-    { title: 'Kegiatan Literasi Iqra', desc: 'Kegiatan aksara yang diikuti oleh lansia di TBM Pustaka Berkiprah merupakan membaca Iqra dan Alquran sebagai melek literasi dalam konteks Alquran yang diikuti oleh peserta lansia.' },
+    { title: 'Kegiatan Literasi Iqra', desc: 'Kegiatan aksara yang diikuti oleh lansia di TBM Pustaka Berkiprah merupakan membaca Iqra dan Alquran.' },
   ];
 
   const dokumentasi = [
@@ -30,7 +30,7 @@ function Kegiatan() {
   return (
     <section id="kegiatan">
       <div className="section-eyebrow reveal">Bab 6 · Jadwal Kegiatan</div>
-      <h2 className="section-title reveal">Agenda Terdekat Kami</h2>
+      <h2 className="section-title reveal">Agenda Kami</h2>
       <p className="section-desc reveal">Pantau jadwal kegiatan rutin dan acara spesial TBM Pustaka Berkiprah.</p>
 
       <div className="kegiatan-layout">
@@ -56,7 +56,7 @@ function Kegiatan() {
           </div>
           <div className="highlight-card">
             <h4>Reading Picnic #5</h4>
-            <p>Acara kumpul komunitas bulan depan di Taman Kota Karawang. Membaca santai sambil piknik keluarga.</p>
+            <p>Acara kumpul komunitas bulan depan di Taman Kota Karawang membaca buku bersama.</p>
             <div>Mei 2026 · Segera Datang</div>
           </div>
         </aside>

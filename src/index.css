@@ -212,7 +212,7 @@ section { padding: 120px 8% 86px; position: relative; }
 .highlight-card { background: rgba(255,255,255,0.09); padding: 1.2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.16); }
 .highlight-card h4 { color: var(--sun); margin-bottom: 0.5rem; }
 .highlight-card p { opacity: 0.78; font-size: 0.92rem; margin-bottom: 1rem; }
-.highlight-card div { font-size: 0.8rem; font-weight: 900; }
+.highlight-card div { display: none; }
 .kegiatan-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
 .kegiatan-gallery figure { background: white; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
 .kegiatan-gallery img { width: 100%; height: 220px; object-fit: cover; display: block; }
