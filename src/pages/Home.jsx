@@ -33,7 +33,7 @@ function Home() {
         <div className="hero-content">
           <div className="hero-logo-lockup reveal">
             <img src={logo} alt="Logo TBM Pustaka Berkiprah" />
-            <span>TBM Pustaka Berkiprah · Karawang </span>
+            <span>TBM Pustaka Berkiprah · Karawang batujya </span>
           </div>
           <h1 className="reveal delay-1">Ruang <em>Nalar</em> &amp;<br/><em>Nyala</em> TBM</h1>
           <p className="hero-desc reveal delay-2">
